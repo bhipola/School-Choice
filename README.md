@@ -1,1 +1,3 @@
 # School-Choice
+
+Code of for the simulation exercise of my economics final dissertation on school choice (link to spanish version:https://eprints.ucm.es/59311/). The Immediate Acceptance algorithm is used in Spain when allocating students to seats in publicly financed schools. However, the priority criteria are established by each autonomous region (Comunidad Autónoma - CC.AA). In the region of Madrid a reformed was undertaken in the definition and importance given to such criteria, and the simulation presented in this code tries to evaluate to impact of such reform in the final allocations: who benefits and who is worse off after the reform is implemented. 
