@@ -16,8 +16,6 @@ indice=function(vector, valor){
   return(indice[indice>0])
 }
 
-
-
 BM=function(df, q){
   asignacion=rep(NA, times=length(zona_cat))
   Pos1_rev=df$Pos1_rev
@@ -64,28 +62,8 @@ BM=function(df, q){
 mat_vacia=matrix(data=NA, nrow=num_alumnos, ncol=22)
 df_vacio=data.frame(mat_vacia)
 
-names(df_vacio)[1]="sim"
-names(df_vacio)[2]="zona_cat"
-names(df_vacio)[3]="hermanos_cat"
-names(df_vacio)[4]="prudente"
-names(df_vacio)[5]="AA"
-names(df_vacio)[6]="OP"
-names(df_vacio)[7]="Pos1"
-names(df_vacio)[8]="Pos2"
-names(df_vacio)[9]="Pos3"
-names(df_vacio)[10]="Pos1_rev"  
-names(df_vacio)[11]="Pos2_rev"  
-names(df_vacio)[12]="Pos3_rev"  
-names(df_vacio)[13]="pun_zona" 
-names(df_vacio)[14]="pun_hermanos"
-names(df_vacio)[15]="pun_AA"
-names(df_vacio)[16]="puntos_tot" 
-names(df_vacio)[17]="asignacion_antes"
-names(df_vacio)[18]="Pos1_rev_desp"
-names(df_vacio)[19]="Pos2_rev_desp"
-names(df_vacio)[20]="Pos3_rev_desp"
-names(df_vacio)[21]="puntos_tot_desp" 
-names(df_vacio)[22]="asignacion_despues"
+names(df_vacio)=c("sim","zona_cat","hermanos_cat","prudente","AA","OP","Pos1","Pos2","Pos3","Pos1_rev","Pos2_rev","Pos3_rev","pun_zona","pun_hermanos","pun_AA","puntos_tot","asignacion_antes","Pos1_rev_desp","Pos2_rev_desp","Pos3_rev_desp","puntos_tot_desp","asignacion_despues")
+
 
 for( i in 1:1000){
   zona_cat=draw_categorical(prob=c(1/3,1/3,1/3), category_labels = c(1,2,3),N=num_alumnos)
@@ -256,37 +234,4 @@ mejoras_OP=mejoras %>%  group_by(sim, mejora, OP)%>%
 
 mejoras_AA=mejoras %>%  group_by(sim, mejora, AA)%>% 
   summarise(total= n()) %>% group_by(mejora, AA) %>% summarise(avg_sim=mean(total), desv_st=sd(total))
-
-
-write.xlsx(as.data.frame(OP_antes), "c:/Users/belen/OneDrive/Escritorio/TFG_ECO/resultados.xlsx", sheetName = "OP_antes_1000", 
-           col.names = TRUE, row.names = FALSE, append = TRUE, showNA = TRUE)
-write.xlsx(as.data.frame(OP_despues), "c:/Users/belen/OneDrive/Escritorio/TFG_ECO/resultados.xlsx", sheetName = "OP_despues_1000", 
-           col.names = TRUE, row.names = FALSE, append = TRUE, showNA = TRUE)
-write.xlsx(as.data.frame(colegios_antes), "c:/Users/belen/OneDrive/Escritorio/TFG_ECO/resultados.xlsx", sheetName = "colegios_antes_1000", 
-           col.names = TRUE, row.names = FALSE, append = TRUE, showNA = TRUE)
-write.xlsx(as.data.frame(colegios_despues), "c:/Users/belen/OneDrive/Escritorio/TFG_ECO/resultados.xlsx", sheetName = "colegios_despues_1000", 
-           col.names = TRUE, row.names = FALSE, append = TRUE, showNA = TRUE)
-write.xlsx(as.data.frame(def_antes), "c:/Users/belen/OneDrive/Escritorio/TFG_ECO/resultados.xlsx", sheetName = "def_antes_1000", 
-           col.names = TRUE, row.names = FALSE, append = TRUE, showNA = TRUE)
-write.xlsx(as.data.frame(def_despues), "c:/Users/belen/OneDrive/Escritorio/TFG_ECO/resultados.xlsx", sheetName = "def_despues_1000", 
-           col.names = TRUE, row.names = FALSE, append = TRUE, showNA = TRUE)
-write.xlsx(as.data.frame(primera_real_antes), "c:/Users/belen/OneDrive/Escritorio/TFG_ECO/resultados.xlsx", sheetName = "primera_real_antes_1000", 
-           col.names = TRUE, row.names = FALSE, append = TRUE, showNA = TRUE)
-write.xlsx(as.data.frame(primera_real_despues), "c:/Users/belen/OneDrive/Escritorio/TFG_ECO/resultados.xlsx", sheetName = "primera_real_despues_1000", 
-           col.names = TRUE, row.names = FALSE, append = TRUE, showNA = TRUE)
-write.xlsx(as.data.frame(primera_revelada_antes), "c:/Users/belen/OneDrive/Escritorio/TFG_ECO/resultados.xlsx", sheetName = "primera_revelada_antes_1000", 
-           col.names = TRUE, row.names = FALSE, append = TRUE, showNA = TRUE)
-write.xlsx(as.data.frame(primera_revelada_despues), "c:/Users/belen/OneDrive/Escritorio/TFG_ECO/resultados.xlsx", sheetName = "primera_revelada_despues_1000", 
-           col.names = TRUE, row.names = FALSE, append = TRUE, showNA = TRUE)
-
-write.xlsx(as.data.frame(mejoras_res), "c:/Users/belen/OneDrive/Escritorio/TFG_ECO/resultados.xlsx", sheetName = "mejoras_res_1000", 
-           col.names = TRUE, row.names = FALSE, append = TRUE, showNA = TRUE)
-
-
-write.xlsx(as.data.frame(mejoras_zona), "c:/Users/belen/OneDrive/Escritorio/TFG_ECO/resultados.xlsx", sheetName = "mejoras_zona", 
-           col.names = TRUE, row.names = FALSE, append = TRUE, showNA = TRUE)
-write.xlsx(as.data.frame(mejoras_AA), "c:/Users/belen/OneDrive/Escritorio/TFG_ECO/resultados.xlsx", sheetName = "mejoras_AA", 
-           col.names = TRUE, row.names = FALSE, append = TRUE, showNA = TRUE)
-write.xlsx(as.data.frame(mejoras_OP), "c:/Users/belen/OneDrive/Escritorio/TFG_ECO/resultados.xlsx", sheetName = "mejoras_OP", 
-           col.names = TRUE, row.names = FALSE, append = TRUE, showNA = TRUE)
 
