@@ -181,7 +181,7 @@ for( i in 1:1000){
 
 }
 
-df_antes_despues=df_vacio[121: 12120,]
+df_antes_despues=df_vacio[(num_alumnos+1):length(df_vacio[,1]),]
 df_antes_despues %>% group_by(sim) %>%summarise(total=n())
 
 
